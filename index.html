@@ -18,10 +18,15 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
       .anime-img {
         width: 100px;
+      }
+      #gambar-edit img {
+        width: 30%;
       }
     </style>
   </head>
@@ -63,6 +68,7 @@
         <div class="p-3 hstack gap-3">
           <!-- tombol tambah -->
           <button
+            id="btn-add"
             class="btn btn-primary"
             data-bs-toggle="modal"
             data-bs-target="#modal-add"
@@ -158,6 +164,7 @@
                 id="gambar"
                 placeholder="Gambar Anime..."
               />
+              <div id="gambar-edit"></div>
               <span id="gambar-error" class="invalid-feedback"></span>
             </div>
             <div class="mb-3">
@@ -185,6 +192,7 @@
             <button
               type="button"
               class="btn btn-secondary"
+              id="btn-close-modal"
               data-bs-dismiss="modal"
             >
               Tutup

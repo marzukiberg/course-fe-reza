@@ -445,7 +445,7 @@ const tableDataAll = document.querySelectorAll('td');
 
 // template literal ` ` (backtick)
 function template(no, title, image, link, releasedDate) {
-  // cara membuat variable pada template literal = ${variable}
+  const index = no - 1;
   return `<tr>
     <th scope="row">${no}</th>
     <td>${title}</td>
@@ -457,14 +457,40 @@ function template(no, title, image, link, releasedDate) {
     </td>
     <td>${releasedDate}</td>
     <td>
-      <button class="btn btn-info">Edit</button>
-      <button class="btn btn-danger">Hapus</button>
+      <button class="btn btn-info btn-edit" data-index="${index}" data-bs-toggle="modal" data-bs-target="#modal-add">Edit</button>
+      <button class="btn btn-danger btn-delete" data-index="${index}">Hapus</button>
     </td>
   </tr>`;
 }
 
 // milih tbody
 const animeList = document.querySelector('#anime-list');
+const judul = document.querySelector('#judul');
+const judulError = document.querySelector('#judul-error');
+const gambar = document.querySelector('#gambar');
+const gambarError = document.querySelector('#gambar-error');
+const gambarEdit = document.querySelector('#gambar-edit');
+const url = document.querySelector('#url');
+const urlError = document.querySelector('#url-error');
+const tahun = document.querySelector('#year');
+const tahunError = document.querySelector('#year-error');
+const btnAdd = document.querySelector('#btn-add');
+const modalTitle = document.querySelector('.modal-title');
+const btnSubmit = document.querySelector('#btn-submit');
+
+let isEdit = false;
+let indexEdit = null;
+
+btnAdd.addEventListener('click', () => {
+  modalTitle.innerText = 'Tambah data anime';
+  btnSubmit.innerText = 'Tambah';
+  judul.value = '';
+  gambarEdit.innerHTML = '';
+  url.value = '';
+  tahun.value = '';
+  isEdit = false;
+  indexEdit = null;
+});
 
 // melakukan perulangan dari data yg ada dengan template (mengulangi template)
 function render(dataList) {
@@ -487,6 +513,54 @@ function render(dataList) {
 // kita render tbody yg udah dipilih dengan variabel render
 // render ini berisi sekumpulan data dengan template yg sudah dibuat
 animeList.innerHTML = render(data);
+function watchButtonEdits() {
+  const btnEdits = document.querySelectorAll('.btn-edit');
+  btnEdits.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      modalTitle.innerText = 'Edit data anime';
+      btnSubmit.innerText = 'Edit';
+
+      const index = e.target.dataset.index;
+      const selected = data[index];
+      console.log(selected);
+      judul.value = selected.animeTitle;
+      gambarEdit.innerHTML = `<img src="${selected.animeImg}" alt="${selected.animeTitle}" />`;
+      url.value = selected.animeUrl;
+      tahun.value = selected.releasedDate;
+      isEdit = true;
+      indexEdit = index;
+    });
+  });
+}
+watchButtonEdits();
+
+function watchButtonDeletes() {
+  const btnDeletes = document.querySelectorAll('.btn-delete');
+  btnDeletes.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      Swal.fire({
+        title: 'Apakah kamu yakin?',
+        text: 'Tindakan ini tidak dapat dibatalkan!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, hapus datanya!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const index = e.target.dataset.index;
+          data.splice(index, 1);
+          animeList.innerHTML = render(data);
+          watchButtonEdits();
+          watchButtonDeletes();
+          watchSubmitEvent();
+          Swal.fire('Terhapus!', 'Data anime berhasil dihapus.', 'success');
+        }
+      });
+    });
+  });
+}
+watchButtonDeletes();
 
 const searchbar = document.querySelector('#searchbar');
 
@@ -521,37 +595,159 @@ searchbar.addEventListener('keyup', (event) => {
   animeList.innerHTML = render(filterResult);
 });
 
-// 1. pilih tombol submit
-const btnSubmit = document.querySelector('#btn-submit');
-
 // 2. pantau event click, kalau misalnya di klik lakukan aksi tambah
-btnSubmit.addEventListener('click', () => {
-  const judul = document.querySelector('#judul');
-  const judulError = document.querySelector('#judul-error');
-  const gambar = document.querySelector('#gambar');
-  const gambarError = document.querySelector('#gambar-error');
-  const url = document.querySelector('#url');
-  const urlError = document.querySelector('#url-error');
-  const tahun = document.querySelector('#year');
-  const tahunError = document.querySelector('#year-error');
+function watchSubmitEvent() {
+  btnSubmit.addEventListener('click', () => {
+    let error = false;
 
-  let error = false;
+    // validasi...
+    // 1. judul is required
+    if (judul.value === '') {
+      judul.classList.add('is-invalid');
+      judulError.innerText = 'Judul harus diisi.';
+      error = true;
+    }
+    if (gambar.files[0] === undefined && isEdit === false) {
+      gambar.classList.add('is-invalid');
+      gambarError.innerText = 'Gambar harus dipilih.';
+      error = true;
+    }
 
-  // validasi...
-  // 1. judul is required
-  if (judul.value === '') {
-    judul.classList.add('is-invalid');
-    judulError.innerText = 'Judul harus diisi.';
-    error = true;
-  }
-  if (gambar.files[0] === undefined) {
-    gambar.classList.add('is-invalid');
-    gambarError.innerText = 'Gambar harus dipilih.';
-    // supaya kode berhenti
-    error = true;
-  }
-  
-  if (error === false) {
-    // eksekusi tambah data
-  }
+    // validasi url
+    if (url.value === '') {
+      url.classList.add('is-invalid');
+      urlError.innerText = 'URL harus diisi';
+      error = true;
+    }
+
+    if (tahun.value === '') {
+      tahun.classList.add('is-invalid');
+      tahunError.innerText = 'Tahun harus diisi';
+      error = true;
+    }
+
+    // tambah event ketika mengetik / mengisi file, maka erronya di-remove
+    judul.addEventListener('keyup', (e) => {
+      e.target.classList.remove('is-invalid');
+      judulError.innerHTML = '';
+      error = false;
+    });
+    gambar.addEventListener('change', (e) => {
+      e.target.classList.remove('is-invalid');
+      gambarError.innerHTML = '';
+      error = false;
+    });
+    url.addEventListener('keyup', (e) => {
+      // regex itu adalah pencarian string berdasarkan pola
+      const validURL = /^(ftp|http|https):\/\/[^ "]+$/;
+      const isValidURL = validURL.test(e.target.value);
+
+      if (isValidURL === false) {
+        e.target.classList.add('is-invalid');
+        urlError.innerHTML = 'URL tidak valid';
+        error = true;
+      } else {
+        e.target.classList.remove('is-invalid');
+        urlError.innerHTML = '';
+        error = false;
+      }
+    });
+    tahun.addEventListener('keyup', (e) => {
+      e.target.classList.remove('is-invalid');
+      tahunError.innerHTML = '';
+      error = false;
+    });
+
+    // kode untuk eksekusi menambah data
+    if (error === false) {
+      // mentransformasikan judul menjadi huruf kecil, dan ada strip di setiap spasi
+      const animeId = judul.value.toLowerCase().replace(' ', '-');
+      const payload = {
+        animeId: animeId,
+        animeTitle: judul.value,
+        animeImg: `${animeId}.png`,
+        animeUrl: url.value,
+        releasedDate: tahun.value,
+      };
+
+      if (isEdit) {
+        // jika posisinya edit
+        // delete menghapus sebuah field di dalam object
+        delete payload.animeImg;
+        data[indexEdit] = {
+          // spread operator, ini artinya menyalin semua field yg ada di data[indexEdit] ke data[indexEdit]
+          ...data[indexEdit],
+          ...payload,
+        };
+      } else {
+        // jika posisinya nambah
+        // method push, untuk menambahkan nilai baru ke dalam array
+        data.push(payload);
+      }
+
+      animeList.innerHTML = render(data);
+      const btnCloseModal = document.querySelector('#btn-close-modal');
+      btnCloseModal.click();
+
+      // panggil sweetalert2
+      Swal.fire({
+        // position: 'top-end',
+        icon: 'success',
+        title: `Data anime berhasil ${
+          isEdit === true ? 'diedit' : 'ditambah'
+        }.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  });
+}
+watchSubmitEvent();
+
+// method array
+// 1. push, menambah data baru ke dalam array
+// data.push('anime baru');
+
+// 2. pop, itu menghapus data terakhir dalam array
+// data.pop();
+
+// 3. slice, itu mengambil beberapa data pada array, slice itu ada rangenya
+// parameter 1, itu index data awal yg mau diambil
+// parameter 2, index data akhir
+// const sepuluhDataPertama = data.slice(10, 20);
+
+// console.log(sepuluhDataPertama);
+
+// 4. splice, menghapus data pada index specific
+// parameter 1, index data yg mau dihapus
+// parameter 2, jumlah data yg mau dihapus
+// data.splice(4, 1);
+
+// 5. filter, untuk mengelompokkan data berdasarkan kondisi tertentu
+const anime2021 = data.filter((anime) => {
+  // return kondisinya
+  return anime.releasedDate === '2021';
 });
+// const horimiya = data.filter((anime) => {
+//   // membuat huruf jadi kecil semua
+//   return anime.animeTitle.toLowerCase().includes('hori');
+// });
+
+// console.log(horimiya);
+
+// 6. find, mirip filter, tapi langsung ke data objectnya...
+// ini hasilnya bukan array lagi, langsung data yg ada di dalam array
+const horimiya = data.find((anime) => anime.animeTitle === 'Horimiya');
+
+// console.log(horimiya?.animeTitle);
+
+// console.log(data);
+
+// memodifikasi data
+horimiya.animeTitle = 'Horimiya New';
+
+// console.log(horimiya);
+
+// data.unshift('Test');
+
+// console.log(data);
