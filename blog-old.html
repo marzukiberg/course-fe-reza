@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <!-- header -->
+  <head>
+    <title>Aplikasi CRUD Data Mahasiswa</title>
+    <!-- meta description adalah deskripsi yang tampil pada halaman web -->
+    <!-- meta-meta di bawah untuk keperluan SEO (Search Engine Optimization) -->
+    <meta name="description" content="Aplikasi CRUD Data Mahasiswa" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- bagian assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./assets/index.css" />
+  </head>
+
+  <!-- body -->
+  <body id="blog">
+    <!-- topbar/navbar -->
+    <nav>
+      <!-- padding pada nav itu ngasih jarak antara navnya dengan isi konten di dalamnya -->
+
+      <!-- div (elemen) itu adalah wadah untuk sekumpulan elemen -->
+      <div class="brand">
+        <!-- a => anchor, biasanya untuk mengarahkan ke sebuah link -->
+        <a href="./index.html">Aplikasi CRUD Mahasiswa</a>
+      </div>
+
+      <!-- isi list link navigasi -->
+      <!-- id itu spesial -->
+      <!-- <div id="links"></div> -->
+      <!-- sementara kalau class itu tidak unique -->
+      <div class="links">
+        <a href="./index.html">Home</a>
+        <a href="./blog.html">Blog</a>
+        <a href="./about.html">About</a>
+      </div>
+    </nav>
+
+    <section class="main-content">
+      <!-- sidebar -->
+      <aside>
+        <div class="links">
+          <a href="./index.html">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+          <a href="./blog.html">
+            <i class="fas fa-blog"></i>
+            <span>Blog</span>
+          </a>
+          <a href="./about.html">
+            <i class="fas fa-info-circle"></i>
+            <span>About</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- content -->
+      <main>
+        <div class="container">
+          <!-- ini bagian toolbar / atas tabel -->
+          <div class="toolbar">
+            <!-- button => tombol -->
+            <!-- tombol untuk tambah data mahasiswa -->
+            <button class="btn-add">Tambah</button>
+
+            <!-- kolom pencarian -->
+            <!-- di dalam element ada namanya attribute => value -->
+            <!-- type => attribute -->
+            <!-- text => value -->
+            <input type="text" placeholder="Cari data..." class="search" />
+          </div>
+
+          <!-- di sini bagian isi content / tabel -->
+          <div class="content">
+            <!-- isi content blog -->
+
+            <!-- daftar artikel -->
+            <div class="articles">
+              <!-- card artikel -->
+              <article>
+                <!-- alt itu teks jika gambarnya gagal dimnuat -->
+                <img
+                  src="https://via.placeholder.com/500x300"
+                  alt="Cara menanam padi"
+                />
+                <div class="card-body">
+                    <!-- ini bagian judul -->
+                  <h4 class="card-title">Cara menanam padi</h4>
+                  <!-- ini bagian deskripsi -->
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eum libero asperiores quasi, quidem, quas deleniti at in quae repellat laudantium quaerat odio necessitatibus itaque, sed odit. Voluptatem, dignissimos quidem!
+                  </p>
+
+                  <button class="card-link">baca artikel</button>
+                </div>
+              </article>
+
+              <article>
+                <!-- alt itu teks jika gambarnya gagal dimnuat -->
+                <img
+                  src="https://via.placeholder.com/500x300"
+                  alt="Cara menanam padi"
+                />
+                <div class="card-body">
+                    <!-- ini bagian judul -->
+                  <h4 class="card-title">Cara menanam padi</h4>
+                  <!-- ini bagian deskripsi -->
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eum libero asperiores quasi, quidem, quas deleniti at in quae repellat laudantium quaerat odio necessitatibus itaque, sed odit. Voluptatem, dignissimos quidem!
+                  </p>
+
+                  <button class="card-link">baca artikel</button>
+                </div>
+              </article>
+
+              <article>
+                <!-- alt itu teks jika gambarnya gagal dimnuat -->
+                <img
+                  src="https://via.placeholder.com/500x300"
+                  alt="Cara menanam padi"
+                />
+                <div class="card-body">
+                    <!-- ini bagian judul -->
+                  <h4 class="card-title">Cara menanam padi</h4>
+                  <!-- ini bagian deskripsi -->
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eum libero asperiores quasi, quidem, quas deleniti at in quae repellat laudantium quaerat odio necessitatibus itaque, sed odit. Voluptatem, dignissimos quidem!
+                  </p>
+
+                  <button class="card-link">baca artikel</button>
+                </div>
+              </article>
+
+              <article>
+                <!-- alt itu teks jika gambarnya gagal dimnuat -->
+                <img
+                  src="https://via.placeholder.com/500x300"
+                  alt="Cara menanam padi"
+                />
+                <div class="card-body">
+                    <!-- ini bagian judul -->
+                  <h4 class="card-title">Cara menanam padi</h4>
+                  <!-- ini bagian deskripsi -->
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eum libero asperiores quasi, quidem, quas deleniti at in quae repellat laudantium quaerat odio necessitatibus itaque, sed odit. Voluptatem, dignissimos quidem!
+                  </p>
+
+                  <button class="card-link">baca artikel</button>
+                </div>
+              </article>
+
+              <article>
+                <!-- alt itu teks jika gambarnya gagal dimnuat -->
+                <img
+                  src="https://via.placeholder.com/500x300"
+                  alt="Cara menanam padi"
+                />
+                <div class="card-body">
+                    <!-- ini bagian judul -->
+                  <h4 class="card-title">Cara menanam padi</h4>
+                  <!-- ini bagian deskripsi -->
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eum libero asperiores quasi, quidem, quas deleniti at in quae repellat laudantium quaerat odio necessitatibus itaque, sed odit. Voluptatem, dignissimos quidem!
+                  </p>
+
+                  <button class="card-link">baca artikel</button>
+                </div>
+              </article>
+
+              <article>
+                <!-- alt itu teks jika gambarnya gagal dimnuat -->
+                <img
+                  src="https://via.placeholder.com/500x300"
+                  alt="Cara menanam padi"
+                />
+                <div class="card-body">
+                    <!-- ini bagian judul -->
+                  <h4 class="card-title">Cara menanam padi</h4>
+                  <!-- ini bagian deskripsi -->
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eum libero asperiores quasi, quidem, quas deleniti at in quae repellat laudantium quaerat odio necessitatibus itaque, sed odit. Voluptatem, dignissimos quidem!
+                  </p>
+
+                  <button class="card-link">baca artikel</button>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- footer -->
+    <footer>
+      <div class="copyright">
+        <!-- html unicode / hex, untuk nuliskan symbol yg ga ada di keyboard -->
+        Copyright &copy; 2023
+      </div>
+    </footer>
+  </body>
+</html>

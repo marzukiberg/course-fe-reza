@@ -1,152 +1,201 @@
 <!DOCTYPE html>
-<html>
-  <!-- header -->
+<html lang="en">
   <head>
-    <title>Aplikasi CRUD Data Mahasiswa</title>
-    <!-- meta description adalah deskripsi yang tampil pada halaman web -->
-    <!-- meta-meta di bawah untuk keperluan SEO (Search Engine Optimization) -->
-    <meta name="description" content="Aplikasi CRUD Data Mahasiswa" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplikasi CRUD Mahasiswa</title>
 
-    <!-- bagian assets -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- memanggil asset bootstrap -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="./assets/index.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      .anime-img {
+        width: 100px;
+      }
+    </style>
   </head>
-
-  <!-- body -->
   <body>
-    <!-- topbar/navbar -->
-    <nav>
-      <!-- padding pada nav itu ngasih jarak antara navnya dengan isi konten di dalamnya -->
-
-      <!-- div (elemen) itu adalah wadah untuk sekumpulan elemen -->
-      <div class="brand">
-        <!-- a => anchor, biasanya untuk mengarahkan ke sebuah link -->
-        <a href="./index.html">Aplikasi CRUD Mahasiswa</a>
-      </div>
-
-      <!-- isi list link navigasi -->
-      <!-- id itu spesial -->
-      <!-- <div id="links"></div> -->
-      <!-- sementara kalau class itu tidak unique -->
-      <div class="links">
-        <a href="./index.html">Home</a>
-        <a href="./blog.html">Blog</a>
-        <a href="./about.html">About</a>
+    <!-- ini bagian navbar -->
+    <nav
+      class="navbar bg-dark navbar-dark navbar-expand-lg mb-3"
+      data-bs-theme="dark"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#">Aplikasi CRUD Anime</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link active" aria-current="page" href="./index.html"
+              >Home</a
+            >
+            <a class="nav-link" href="./blog.html">Blog</a>
+            <a class="nav-link" href="./about.html">About</a>
+          </div>
+        </div>
       </div>
     </nav>
 
-    <section class="main-content">
-      <!-- sidebar -->
-      <aside>
-        <div class="links">
-          <a href="./index.html">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-          </a>
-          <a href="./blog.html">
-            <i class="fas fa-blog"></i>
-            <span>Blog</span>
-          </a>
-          <a href="./about.html">
-            <i class="fas fa-info-circle"></i>
-            <span>About</span>
-          </a>
-        </div>
-      </aside>
-
-      <!-- content -->
-      <main>
-        <div class="container">
-          <!-- ini bagian toolbar / atas tabel -->
-          <div class="toolbar">
-            <!-- button => tombol -->
-            <!-- tombol untuk tambah data mahasiswa -->
-            <button class="btn-add">Tambah</button>
-
-            <!-- kolom pencarian -->
-            <!-- di dalam element ada namanya attribute => value -->
-            <!-- type => attribute -->
-            <!-- text => value -->
-            <input type="text" placeholder="Cari data..." class="search" />
-          </div>
-
-          <!-- di sini bagian isi content / tabel -->
-          <div class="content">
-            <!-- tabel -->
-            <table border="1" cellpadding="5" cellspacing="0">
-              <!-- table header -->
-              <thead>
-                <!-- di setiap bagian itu ada row/baris (tr) - secara horiozntal -->
-                <!-- kalau th / td itu secara vertikal / kolom -->
-                <tr>
-                  <!-- colspan = memperlebar ukuran column -->
-                  <th colspan="5">Data mahasiswa</th>
-                </tr>
-                <tr>
-                  <th>No.</th>
-                  <th>NIM</th>
-                  <th>Nama</th>
-                  <th>Email</th>
-                  <th>Aksi</th>
-                </tr>
-              </thead>
-              <!-- table body -->
-              <tbody>
-                <tr>
-                  <!-- untuk kolom nomor -->
-                  <td>1</td>
-                  <!-- untuk kolom nim -->
-                  <td>11753101951</td>
-                  <!-- untuk kolom nama -->
-                  <td>Uki</td>
-                  <!-- untuk kolom email -->
-                  <td>marzukiberg@gmail.com</td>
-                  <!-- untuk kolom aksi -->
-                  <td>
-                    <button class="btn-edit">edit</button>
-                    <button class="btn-delete">hapus</button>
-                  </td>
-                </tr>
-                <tr>
-                  <!-- untuk kolom nomor -->
-                  <td>2</td>
-                  <!-- untuk kolom nim -->
-                  <td>11753101951</td>
-                  <!-- untuk kolom nama -->
-                  <td>Ukay</td>
-                  <!-- untuk kolom email -->
-                  <td>marzukiberg2@gmail.com</td>
-                  <!-- untuk kolom aksi -->
-                  <td>
-                    <button class="btn-edit">edit</button>
-                    <button class="btn-delete">hapus</button>
-                  </td>
-                </tr>
-              </tbody>
-              <!-- table footer -->
-              <tfoot></tfoot>
-            </table>
+    <!-- content -->
+    <div class="container mt-3 p-3 border">
+      <div class="vstack gap-3">
+        <!-- bagian toolbar -->
+        <div class="p-3 hstack gap-3">
+          <!-- tombol tambah -->
+          <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#modal-add"
+          >
+            Tambah Data
+          </button>
+          <!-- cari data -->
+          <div class="mb-0">
+            <input
+              type="text"
+              class="form-control"
+              id="searchbar"
+              placeholder="Cari data..."
+            />
           </div>
         </div>
-      </main>
-    </section>
 
-    <!-- footer -->
-    <footer>
-      <div class="copyright">
-        <!-- html unicode / hex, untuk nuliskan symbol yg ga ada di keyboard -->
-        Copyright &copy; 2023
+        <!-- bagian table -->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">No.</th>
+              <th scope="col">Judul</th>
+              <th scope="col">Gambar</th>
+              <th scope="col">URL</th>
+              <th scope="col">Tahun Rilis</th>
+              <th scope="col">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="anime-list">
+            <tr>
+              <th scope="row">1</th>
+              <td>One Piece</td>
+              <td>
+                <img
+                  src="https://via.placeholder.com/100"
+                  class="img-thumbnail"
+                  alt="Gambar"
+                />
+              </td>
+              <td>
+                <a href="#">Buka Link</a>
+              </td>
+              <td>1999</td>
+              <td>
+                <button class="btn btn-info">Edit</button>
+                <button class="btn btn-danger">Hapus</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </footer>
+    </div>
+
+    <!-- kumpulan modal -->
+    <div
+      class="modal fade"
+      id="modal-add"
+      tabindex="-1"
+      aria-labelledby="modal-add-label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modal-add-label">
+              Tambah Data Anime
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="judul" class="form-label">Judul</label>
+              <input
+                type="text"
+                class="form-control"
+                id="judul"
+                required
+                placeholder="Judul Anime..."
+              />
+              <span id="judul-error" class="invalid-feedback"></span>
+            </div>
+            <div class="mb-3">
+              <label for="gambar" class="form-label">Gambar</label>
+              <input
+                type="file"
+                class="form-control"
+                id="gambar"
+                placeholder="Gambar Anime..."
+              />
+              <span id="gambar-error" class="invalid-feedback"></span>
+            </div>
+            <div class="mb-3">
+              <label for="url" class="form-label">URL</label>
+              <input
+                type="text"
+                class="form-control"
+                id="url"
+                placeholder="URL Anime..."
+              />
+              <span id="url-error" class="invalid-feedback"></span>
+            </div>
+            <div class="mb-3">
+              <label for="year" class="form-label">Tahun Rilis</label>
+              <input
+                type="text"
+                class="form-control"
+                id="year"
+                placeholder="Tahun Rilis Anime..."
+              />
+              <span id="year-error" class="invalid-feedback"></span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Tutup
+            </button>
+            <button type="button" id="btn-submit" class="btn btn-primary">Tambah</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- script buatan sendiri -->
+    <script src="./index.js"></script>
   </body>
 </html>

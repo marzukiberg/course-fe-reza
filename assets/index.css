@@ -2,180 +2,250 @@
 
 /* default nya html itu ada jarak padding dan margin */
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Quicksand', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
 }
-
 
 /* bagian topbar / navbar */
 /* parent > pembungkus */
 
 /* selector => digunakan untuk memilih elemen mana yg mau di styling */
 nav {
-    /* style kode elemen nav ada di sini */
-    /* ngasih size itu biasanya kelipatan 8px */
-    /* padding, itu jarak antara dia dengan isi konten */
-    /* padding => property */
-    /* 32px => value/nilai */
-    padding: 32px;
-    /* background-color: red; */
+  /* style kode elemen nav ada di sini */
+  /* ngasih size itu biasanya kelipatan 8px */
+  /* padding, itu jarak antara dia dengan isi konten */
+  /* padding => property */
+  /* 32px => value/nilai */
+  padding: 14px 32px;
+  /* background-color: red; */
 
-    /* margin, jarak antara dia dengan konten di luarnya */
-    /* margin: 32px; */
+  /* margin, jarak antara dia dengan konten di luarnya */
+  /* margin: 32px; */
 
-    /* default/bawaan tampilan nav adalah block */
-    /* block itu tampilan penuh */
-    /* display: block; */
+  /* default/bawaan tampilan nav adalah block */
+  /* block itu tampilan penuh */
+  /* display: block; */
 
-    /* inline => tampilan sebaris */
-    /* display: inline; */
+  /* inline => tampilan sebaris */
+  /* display: inline; */
 
-    /* inline-block, gabungan inline dan block */
-    /* display: inline-block; */
+  /* inline-block, gabungan inline dan block */
+  /* display: inline-block; */
 
-    /* flex, itu membuat isi konten jadi sejajar, dia mirip block */
-    display: flex;
+  /* flex, itu membuat isi konten jadi sejajar, dia mirip block */
+  display: flex;
 
-    /* ngatur konten ada di mana secara horizontal */
-    justify-content: space-between;
+  /* ngatur konten ada di mana secara horizontal */
+  justify-content: space-between;
 
-    /* ngatur konten secara vertikal */
-    align-items: center;
+  /* ngatur konten secara vertikal */
+  align-items: center;
 
-    /* border itu bagian tepian dari elemen */
-    /* border: 2px solid black; */
-    /* border bottom berarti ngasih tepian bagian bawah saja */
-    border-bottom: 1px solid #ccc;
+  /* border itu bagian tepian dari elemen */
+  /* border: 2px solid black; */
+  /* border bottom berarti ngasih tepian bagian bawah saja */
+  border-bottom: 1px solid #ccc;
 }
 
 /* kalau milih class itu pakai dot (.), kalau id pakai pagar (#) */
 a {
-    /* hilangin underscore pada link */
-    text-decoration: none;
-    color: #0275d8;
+  /* hilangin underscore pada link */
+  text-decoration: none;
+  color: #0275d8;
 }
 
-
 nav .brand a {
-    letter-spacing: 2px;
+  letter-spacing: 2px;
 }
 
 nav .links {
-    display: flex;
-    gap: 12px;
+  display: flex;
+  gap: 12px;
 }
 
 nav .links a {
-    padding: 12px;
-    transition: 300ms;
+  padding: 12px;
+  transition: 300ms;
 }
 
 nav .links a:hover {
-    background-color: #0275d8;
-    color: white;
+  background-color: #0275d8;
+  color: white;
 }
-
 
 /* section main content */
 .main-content {
-    display: flex;
+  display: flex;
 }
 
 /* bagian sidebar */
 aside {
-    /* width => lebar elemen */
-    width: 250px;
-    /* vh itu view height */
-    height: 85vh;
+  /* width => lebar elemen */
+  width: 250px;
+  /* vh itu view height */
+  height: 85vh;
 
-    border-right: 1px solid #ccc;
+  border-right: 1px solid #ccc;
 }
 
 aside .links a {
-    display: block;
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
-    transition: 0.3s;
+  display: block;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+  transition: 0.3s;
 }
 aside .links a:hover {
-    background-color: #0275d8;
-    color: white;
+  background-color: #0275d8;
+  color: white;
 }
 aside .links a span {
-    margin-left: 8px;
+  margin-left: 8px;
 }
-
 
 /* content */
 main {
-    width: 100%;
+  width: 100%;
 }
 
 main .container {
-    padding: 32px;
+  padding: 32px;
 }
 
 main .container .toolbar {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 14px;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
 main .container .toolbar .btn-add {
-    padding: 8px;
-    background-color: #0275d8;
-    color: white;
-    border: none;
+  padding: 8px;
+  background-color: #0275d8;
+  color: white;
+  border: none;
 }
 
 main .container .toolbar .search {
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    width: 300px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 300px;
 }
 
 main .container .content table {
-    width: 100%;
-    border: 1px solid #ccc;
+  width: 100%;
+  border: 1px solid #ccc;
 }
 
 main .container .content table td,
 main .container .content table th {
-    padding: 16px;
-    border: 1px solid #ccc;
+  padding: 16px;
+  border: 1px solid #ccc;
 }
 
-table .btn-edit, table .btn-delete {
-    padding: 8px;
-    text-transform: capitalize;
-    border: none;
-    cursor: pointer;
+table .btn-edit,
+table .btn-delete {
+  padding: 8px;
+  text-transform: capitalize;
+  border: none;
+  cursor: pointer;
 }
 table .btn-edit {
-    background-color: cornflowerblue;
-    color: white;
+  background-color: cornflowerblue;
+  color: white;
 }
 table .btn-delete {
-    background-color: orangered;
-    color: white;
+  background-color: orangered;
+  color: white;
 }
-
 
 /* bagian footer */
 footer {
-    padding: 24px;
-    border-top: 1px solid #ccc;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: #0275d8;
+  padding: 12px;
+  border-top: 1px solid #ccc;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #0275d8;
 }
 
 footer .copyright {
-    text-align: center;
-    color: white;
+  text-align: center;
+  color: white;
+}
+
+/* HALAMAN BLOG */
+#blog .articles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+#blog .articles article {
+  width: calc(33% - 14px);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#blog .articles article:hover {
+  box-shadow: 0 8px 8px #ccc;
+  transform: translateY(-8px);
+}
+
+#blog article img {
+  width: 100%;
+}
+
+#blog article .card-body {
+  padding: 24px;
+}
+
+#blog article .card-title,
+#blog article .card-text {
+  margin-bottom: 14px;
+  text-align: justify;
+}
+
+#blog article .card-link {
+  padding: 4px 8px;
+  border: none;
+  background-color: #0275d8;
+  color: white;
+  text-transform: capitalize;
+}
+
+/* STYLE UNTUK MOBILE */
+@media screen and (max-width: 560px) {
+  nav {
+    justify-content: center;
+  }
+  nav .links {
+    display: none;
+  }
+
+  aside a span {
+    display: none;
+  }
+
+  .toolbar .search {
+    width: 200px !important;
+  }
+
+  /* blog */
+  #blog article {
+    width: 100% !important;
+  }
+}
+
+
+/* STYLE UNTUK TABLET */
+@media screen and (max-width: 768px) {
+    #blog article {
+        width: calc(50% - 14px) !important;
+    }
 }
